@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Film Önerisi</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-dark text-white">
+  <div class="container d-flex justify-content-center mt-5">
+    <form method="POST" action="/">
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-outline-primary btn-block" name="emotion" value="happy">Happy</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-outline-success btn-block" name="emotion" value="sad">Sad</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-outline-danger btn-block" name="emotion" value="fear">Fear</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-outline-warning btn-block" name="emotion" value="angry">Angry</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-outline-info btn-block" name="emotion" value="surprise">Surprise</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-outline-secondary btn-block" name="emotion" value="disgust">Disgust</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-outline-light btn-block" name="emotion" value="neutral">Neutral</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <div class="container d-flex justify-content-center align-items-center mt-5">
+    {% if film %}
+    <div class="card" style="width: 100%;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{{ film['Poster'] }}" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body justify-content-center align-items-center d-flex flex-column">
+            <h5 class="card-title">{{ film['Title'] }}</h5>
+            <p class="card-text">{{ film['Description'] }}</p>
+            <ul class="list-group list-group-flush w-100">
+              <li class="list-group-item">Director: {{ film['Director'] }}</li>
+              <li class="list-group-item">Actors: {{ film['Actors'][0] }}, {{ film['Actors'][1] }}, {{ film['Actors'][2] }}, {{ film['Actors'][3] }}</li>
+              <li class="list-group-item">Genre: {{ film['Genre'] }}</li>
+              <li class="list-group-item">Year: {{ film['Year'] }}</li>
+              <li class="list-group-item">Rating: {{ film['Rating'] }}</li>
+              <li class="list-group-item">Metascore: {{ film['Metascore'] }}</li>
+              <li class="list-group-item">Votes: {{ film['Votes'] }}</li>
+              <li class="list-group-item">Revenue: {{ film['Revenue'] }}</li>
+              <li class="list-group-item">Duration: {{ film['Runtime'] }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <p>Film önerisi için bir duygu seçin.</p>
+    {% endif %}
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
